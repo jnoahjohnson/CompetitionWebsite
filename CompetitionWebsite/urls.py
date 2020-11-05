@@ -17,7 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
     
 urlpatterns = [
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('connectfriends/', include('connectfriends.urls')),
     path('leaderboard/', include('leaderboard.urls')),
+<<<<<<< HEAD
     path('authorization/', include('authorization.urls')),
 ]       
+=======
+]
+>>>>>>> 49b6645c9b180149381f2fa80cf55b8f77981fe6
