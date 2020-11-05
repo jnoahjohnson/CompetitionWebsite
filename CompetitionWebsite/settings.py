@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'connectfriends.apps.ConnectfriendsConfig',
     'leaderboard.apps.LeaderboardConfig',
+    'authorization.apps.AuthorizationConfig',
     'competitions.apps.CompetitionsConfig'
 ]
 
