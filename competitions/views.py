@@ -1,8 +1,10 @@
 from django.http import HttpResponse
+from django.shortcuts import render
+
 
 
 def indexPageView(request):
-    return HttpResponse('Competition Index')
+    return render(request, 'competitions/index.html')
 
 
 def createCompetitions(request):
