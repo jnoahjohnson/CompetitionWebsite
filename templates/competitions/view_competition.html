@@ -1,0 +1,22 @@
+{% extends 'base.html' %}{% block content%}
+<div class="ml-4 mt-1">
+  <h1>{{ competitionData.name }}</h1>
+  <h3>{{ competitionData.description }}</h3>
+  <div class="text-center mt-5">
+    <i class="fas fa-clipboard fa-4x text-gray-300"></i>
+    <p class="mt-2">Insert form here with the current day tasks</p>
+  </div>
+
+  <div class="mx-auto d-flex flex-row justify-content-center mt-3">
+    <div class="col-auto">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        onclick="location.href='{% url 'edit_competition' competition_id=competitionData.id %}'"
+      >
+        <i class="fas fa-pencil text-gray-300"></i> Edit Competition
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}

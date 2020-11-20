@@ -3,6 +3,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
 ### Django ###
+
+
+CompetitionWebsite/settings.py
+
 *.log
 *.pot
 *.pyc
