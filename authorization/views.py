@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def indexPageView(request) :
-    return HttpResponse('Authorization Index') 
+def LoginPageView(request) :
+    return render(request, 'authorization/index.html') 
 
-def Login(request) :
-    return HttpResponse('Login Authorization') 
-
-def Logout(request) :
+def LogoutPageView(request) :
     return HttpResponse('Logout Authorization') 
+
+def ProfilePageView(request) :
+    return HttpResponse('Profile Page') 
