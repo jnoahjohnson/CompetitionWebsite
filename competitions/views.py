@@ -38,8 +38,12 @@ def createCompetitions(request):
     return render(request, 'competitions/new_competition.html')
 
 
-def editCompetitions(request):
-    return HttpResponse('Edit Competitions')
+def editCompetitions(request, competition_id):
+    context = {
+        'competitionData': defaultCompetitions[competition_id - 1]
+    }
+
+    return render(request, 'competitions/edit_competition.html', context)
 
 
 def viewCompetitions(request, competition_id):
