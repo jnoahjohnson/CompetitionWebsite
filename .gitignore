@@ -5,7 +5,7 @@
 ### Django ###
 
 
-CompetitionWebsite/settings.py
+./CompetitionWebsite/settings.py
 
 *.log
 *.pot
