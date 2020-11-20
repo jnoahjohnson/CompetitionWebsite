@@ -8,21 +8,25 @@
 
   <!-- Content Row -->
   <div class="row">
+    {% for competition in competitions %}
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
+    <div
+      class="col-xl-3 col-md-6 mb-4"
+      onclick="location.href='{% url 'competition_view' competition_id=competition.id %}'"
+    >
+      <div class="card border-left-info shadow h-200 py-4">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div
                 class="text-xs font-weight-bold text-info text-uppercase mb-1"
               >
-                Competition Name
+                {{ competition.name }}
               </div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                    50%
+                    {{ competition.percentComplete }}%
                   </div>
                 </div>
                 <div class="col">
@@ -30,8 +34,8 @@
                     <div
                       class="progress-bar bg-info"
                       role="progressbar"
-                      style="width: 50%"
-                      aria-valuenow="50"
+                      style="width: {{competition.percentComplete}}%"
+                      aria-valuenow="{{competition.percentComplete}}"
                       aria-valuemin="0"
                       aria-valuemax="100"
                     ></div>
@@ -40,64 +44,33 @@
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+              <i class="fas fa-{{competition.icon}} fa-2x text-gray-300"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div
-                class="text-xs font-weight-bold text-info text-uppercase mb-1"
-              >
-                Competition Name
-              </div>
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                    50%
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="progress progress-sm mr-2">
-                    <div
-                      class="progress-bar bg-info"
-                      role="progressbar"
-                      style="width: 50%"
-                      aria-valuenow="50"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 
-  <div class="mx-auto d-flex flex-row justify-content-center">
+  <div class="mx-auto d-flex flex-row justify-content-center mt-3">
     <div class="col-auto">
-      <button class="btn btn-primary" type="submit">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        onclick="location.href='{% url 'create_competition' %}'"
+      >
         <i class="fas fa-plus text-gray-300"></i> New Competition
       </button>
     </div>
   </div>
 
+  {% comment %}
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Daily Tasks</h1>
   </div>
+  {% endcomment %}
 
   <!-- End of Main Content -->
 </div>
