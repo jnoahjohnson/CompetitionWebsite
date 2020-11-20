@@ -1,9 +1,10 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 
 def indexPageView(request) :
-    return HttpResponse('LEADERBOARD')  
+    return render(request, 'leaderboard/index.html')  
 def editLeaderboardView(request) :
-    return HttpResponse('Edit Leaderboard') 
+    return render(request, 'leaderboard/edit.html') 
 def viewLeaderboardView(request) :
-    return HttpResponse('View Leaderboard') 
+    return render(request, 'leaderboard/view.html' ) 
 
