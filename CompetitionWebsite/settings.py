@@ -82,8 +82,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'competitionwebsite',
         'USER': 'postgres',
-        'PASSWORD': 'konojo',
+<<<<<<< HEAD
+<<<<<<< HEAD
+        'PASSWORD': 'Tucker01',
+=======
+        'PASSWORD': 'zdanie9',
+>>>>>>> 2f06be5b1d475f73ea6b2090ec0aa70777d5962d
         'HOST': 'localhost'
+=======
+        'PASSWORD': 'Tucker15',
+        'HOST': 'localhost',
+>>>>>>> 101e19db9a0918b56ed543f1409040dba7240a10
     }
 }
 
