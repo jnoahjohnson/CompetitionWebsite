@@ -3,7 +3,7 @@ from .views import indexPageView, editConnectFriendsView, createConnectFriendsVi
 
 urlpatterns = [
     path("edit/", editConnectFriendsView, name="edit"),
-    path("create/", createConnectFriendsView, name="create"),
+    path("create/", createConnectFriendsView, name="create_group"),
     path("join/", joinConnectFriendsView, name="join"),
     path("", indexPageView, name="connectfriends_home")
 ] 
