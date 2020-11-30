@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Connect Friends</h1>
+    <h1 class="h3 mb-0 text-gray-800">Connect With Friends</h1>
   </div>
 
   <!-- Content Row -->
@@ -31,8 +31,22 @@
 
   <div class="mx-auto d-flex flex-row justify-content-center">
     <div class="col-auto">
-      <button class="btn btn-primary" type="submit">
-        <i class="fas fa-plus text-gray-300"></i> New Group
+      <button class="btn btn-primary" type="submit" onclick="location.href = '{% url 'create_group' %}'">
+        <i class="fas fa-plus text-gray-300"></i> Create New Group
+      </button>
+    </div>
+  </div>
+
+  <div class="d-sm-flex align-items-center justify-content-center mb-0">
+    <div class="col-auto">
+      <p class="mb-0 text-gray-800">- Or -</p>
+    </div>
+  </div>
+
+  <div class="mx-auto d-flex flex-row justify-content-center">
+    <div class="col-auto">
+      <button class="btn btn-primary" type="submit" onclick="location.href = '{% url 'join_group' %}'">
+        <i class="fas fa-link text-gray-300"></i> Join Group
       </button>
     </div>
   </div>
