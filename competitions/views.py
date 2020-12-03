@@ -51,3 +51,6 @@ def viewCompetitions(request, competition_id):
         'competitionData': defaultCompetitions[competition_id - 1]
     }
     return render(request, 'competitions/view_competition.html', context)
+
+def addCompetition(request):
+    return(HttpResponse('Hello'))
