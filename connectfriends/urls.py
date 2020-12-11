@@ -6,4 +6,4 @@ urlpatterns = [
     path("create/", createConnectFriendsView, name="create_group"),
     path("join/", joinConnectFriendsView, name="join"),
     path("", indexPageView, name="connectfriends_home")
-] 
+]
