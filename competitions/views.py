@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Competition
 
 defaultCompetitions =  [
     {
@@ -27,8 +28,10 @@ defaultCompetitions =  [
 
 
 def indexPageView(request):
+    competitions = Competition.objects.all()
+
     context = {
-        "competitions": defaultCompetitions
+        "competitions": competitions
     }
 
     return render(request, 'competitions/index.html', context)
@@ -47,10 +50,18 @@ def editCompetitions(request, competition_id):
 
 
 def viewCompetitions(request, competition_id):
+    competition = Competition.objects.get(id=competition_id)
     context = {
-        'competitionData': defaultCompetitions[competition_id - 1]
+        'competitionData': competition
     }
     return render(request, 'competitions/view_competition.html', context)
 
 def addCompetition(request):
+    if request.method == 'POST':
+        new_competition = Competition()
+        new_competition.name = request.POST.get('comp_name')
+        new_competition.description = request.POST.get('comp_description')
+        new_competition.points = request.POST.get('comp_points')
+
+        new_competition.save()
     return(HttpResponse('Hello'))
