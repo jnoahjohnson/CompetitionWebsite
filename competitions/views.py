@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Competition
 
-defaultCompetitions =  [
+defaultCompetitions = [
     {
         'id': 1,
         'name': 'Health',
@@ -18,7 +18,7 @@ defaultCompetitions =  [
         'description': 'Get spiritual!!!'
     },
     {
-         'id': 3,
+        'id': 3,
         'name': 'Reading',
         'percentComplete': 21,
         'icon': 'book',
@@ -38,6 +38,16 @@ def indexPageView(request):
 
 
 def createCompetitions(request):
+    if request.method == 'POST':
+        new_competition = Competition()
+        new_competition.name = request.POST.get('comp_name')
+        new_competition.description = request.POST.get('comp_description')
+        new_competition.points = request.POST.get('comp_points')
+
+        new_competition.save()
+
+        return redirect('competition_home')
+
     return render(request, 'competitions/new_competition.html')
 
 
@@ -55,13 +65,3 @@ def viewCompetitions(request, competition_id):
         'competitionData': competition
     }
     return render(request, 'competitions/view_competition.html', context)
-
-def addCompetition(request):
-    if request.method == 'POST':
-        new_competition = Competition()
-        new_competition.name = request.POST.get('comp_name')
-        new_competition.description = request.POST.get('comp_description')
-        new_competition.points = request.POST.get('comp_points')
-
-        new_competition.save()
-    return(HttpResponse('Hello'))

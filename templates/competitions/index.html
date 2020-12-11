@@ -21,26 +21,8 @@
               <div
                 class="text-xs font-weight-bold text-info text-uppercase mb-1"
               >
-                {{competition.name}} - {{competition.id}}
-              </div>
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                    {{competition.percentComplete}}%
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="progress progress-sm mr-2">
-                    <div
-                      class="progress-bar bg-info"
-                      role="progressbar"
-                      style="width: {{competition.percentComplete}}%"
-                      aria-valuenow="{{competition.percentComplete}}"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
+                {{competition.name}} - {{competition.id}} -
+                {{competition.points}}
               </div>
             </div>
             <div class="col-auto">
