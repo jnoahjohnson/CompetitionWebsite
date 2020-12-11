@@ -5,4 +5,18 @@
     <!-- Insert form here -->
   </div>
 </div>
+
+<form action="{% url 'create_competition' %}" method="post">
+  {% csrf_token %}
+  <label for="competition_name">What is the name of the competition?</label>
+  <input id="competition_name" type="text" name="competition_name">
+
+  <label for="competition_description">What is the description of the competition?</label>
+  <input id="competition_description" type="text" name="competition_description">
+
+  <label for="competition_points">How many points will the competition be worth?</label>
+  <input id="competition_points" type="number" step="10" min="10" name="competition_points">
+
+  <input type="submit" value="Save">
+</form>
 {% endblock %}

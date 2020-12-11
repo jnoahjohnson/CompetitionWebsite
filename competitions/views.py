@@ -38,6 +38,17 @@ def indexPageView(request):
 
 
 def createCompetitions(request):
+    if request.method == "POST" :
+        competition = Competition()
+        competition.name = request.POST.get('competition_name')
+        competition.description = request.POST.get('competition_description')
+        competition.points = request.POST.get('competition_points')
+
+        competition.save()
+
+        return redirect('/competitions/')
+
+
     return render(request, 'competitions/new_competition.html')
 
 
@@ -50,4 +61,7 @@ def editCompetitions(request, competition_id):
 
 
 def viewCompetitions(request, competition_id):
+    context = {
+        'competitionData': defaultCompetitions[competition_id - 1]
+    }
     return render(request, 'competitions/view_competition.html', context)
