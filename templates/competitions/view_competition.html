@@ -1,23 +1,32 @@
 {% extends 'base.html' %}{% block content%}
 <div class="ml-4 mt-1">
-  <h1>{{ competitionData.name }}</h1>
-  <h3>{{ competitionData.description }}</h3>
-  <div class="text-center mt-5">
-    <i class="fas fa-clipboard fa-4x text-gray-300"></i>
-    <p class="mt-2">Insert form here with the current day tasks</p>
-    <p>Just list each of the tasks with a checkmark</p>
-    <p />
+  <div class="container">
+    <h1 class="text-dark">{{ competition.name }}</h1>
+    <h3>Points: {{ competition.points }}</h3>
+    <div class="text-center mt-5">
+      <p class="h5 text-dark mb-4">{{competition.description}}</p>
+    </div>
   </div>
 
   <div class="mx-auto d-flex flex-row justify-content-center mt-3">
     <div class="col-auto">
       <button
         class="btn btn-primary"
-        type="submit"
-        onclick="location.href='{% url 'edit_competition' competition_id=competitionData.id %}'"
+        onclick="location.href='{% url 'edit_competition' competition_id=competition.id %}'"
       >
-        <i class="fas fa-pencil text-gray-300"></i> Edit Competition
+        <i class="fas fa-edit text-gray-300"></i> Edit Competition
       </button>
+    </div>
+    <div class="col-auto">
+      <form
+        method="POST"
+        action="{% url 'delete_competition' competition_id=competition.id %}"
+      >
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">
+          <i class="fas fa-trash text-gray-300"></i> Delete Competition
+        </button>
+      </form>
     </div>
   </div>
 </div>

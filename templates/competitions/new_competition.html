@@ -5,18 +5,42 @@
     <!-- Insert form here -->
   </div>
 </div>
+<div class="w-75 mx-auto">
+  <form action="{% url 'create_competition' %}" method="post">
+    {% csrf_token %}
+    <label class="form-label" for="competition_name"
+      >What is the name of the competition?</label
+    >
+    <input
+      class="form-control"
+      id="competition_name"
+      type="text"
+      name="competition_name"
+    />
 
-<form action="{% url 'create_competition' %}" method="post">
-  {% csrf_token %}
-  <label for="competition_name">What is the name of the competition?</label>
-  <input id="competition_name" type="text" name="competition_name">
+    <label class="form-label" for="competition_description"
+      >What is the description of the competition?</label
+    >
+    <input
+      id="competition_description"
+      class="form-control"
+      type="text"
+      name="competition_description"
+    />
 
-  <label for="competition_description">What is the description of the competition?</label>
-  <input id="competition_description" type="text" name="competition_description">
+    <label class="form-label" for="competition_points"
+      >How many points will the competition be worth?</label
+    >
+    <input
+      id="competition_points"
+      class="form-control mb-3"
+      type="number"
+      step="10"
+      min="10"
+      name="competition_points"
+    />
 
-  <label for="competition_points">How many points will the competition be worth?</label>
-  <input id="competition_points" type="number" step="10" min="10" name="competition_points">
-
-  <input type="submit" value="Save">
-</form>
+    <input class="btn btn-primary" type="submit" value="Save" />
+  </form>
+</div>
 {% endblock %}

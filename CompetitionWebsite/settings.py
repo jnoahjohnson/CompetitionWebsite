@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'competitions.apps.CompetitionsConfig',
-    'connectfriends.apps.ConnectfriendsConfig',
     'leaderboard.apps.LeaderboardConfig',
     'authorization.apps.AuthorizationConfig',
 ]
