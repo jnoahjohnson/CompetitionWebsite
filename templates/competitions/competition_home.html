@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Competitions</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    {% for competition in competitions %}
+    <div
+      class="col-xl-4 col-md-6 mb-4"
+      onclick="location.href = '{% url 'competition_view' competition_id=competition.id%}'"
+    >
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body d-flex justify-content-between flex-column">
+          <div class="row">
+            <div class="col-8">
+              <p class="text-dark h4">{{competition.name}}</p>
+              <p class="text-secondary h6 mb-3">Created by USERNAME</p>
+            </div>
+            <div
+              class="col-4 d-flex justify-content-center align-items-center flex-column"
+            >
+              <p class="mb-1">Points</p>
+              <p class="mb-0 h2">{{competition.points}}</p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-info" onclick="location.href = '{% url 'competition_view' competition_id=competition.id %}'">Compete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+
+    <div
+      class="mx-auto d-flex flex-row justify-content-center"
+      onclick="location.href = '{% url 'create_competition' %}'"
+    >
+      <div class="col-auto">
+        <button class="btn btn-primary" type="submit">
+          <i class="fas fa-plus text-gray-300"></i> New Competition
+        </button>
+      </div>
+    </div>
+
+    <!-- End of Main Content -->
+  </div>
+  {% endblock %}
+</div>
