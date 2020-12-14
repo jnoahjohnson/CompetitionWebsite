@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import LeaderBoard
 
-def indexPageView(request) :
-    return render(request, 'leaderboard/index.html')  
+def homeLeaderboardView(request) :
+    competitioner = LeaderBoard.competition.objects.get(id=competition_id)
+    
+
+    return render(request, 'leaderboard/home.html', context)  
 def editLeaderboardView(request) :
     return render(request, 'leaderboard/edit.html') 
 def viewLeaderboardView(request) :
