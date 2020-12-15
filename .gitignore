@@ -4,9 +4,6 @@
 
 ### Django ###
 
-
-./CompetitionWebsite/settings.py
-
 *.log
 *.pot
 *.pyc
@@ -16,6 +13,7 @@ db.sqlite3
 db.sqlite3-journal
 media
 venv
+venv/
 
 .vscode
 
