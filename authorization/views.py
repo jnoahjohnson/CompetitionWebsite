@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from core.forms import SignUpForm
+from .models import Competitor
+from django.contrib.auth.models import User
 
 
 def login_view(request):
@@ -37,7 +39,12 @@ def logout_view(request):
 
 
 def profile_view(request):
-    return render(request, 'authorization/profile.html')
+    user = User.objects.get(id=request.user.id)
+
+    context = {
+        "user": user
+    }
+    return render(request, 'authorization/profile.html', context)
 
 
 def create_profile(request):
@@ -48,6 +55,10 @@ def create_profile(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
+
+            competitor = Competitor()
+            competitor.user = user
+            competitor.save()
 
             login(request, user)
 

@@ -19,7 +19,8 @@
           <div class="row">
             <div class="col-8">
               <p class="text-dark h4">{{competition.name}}</p>
-              <p class="text-secondary h6 mb-3">Created by USERNAME</p>
+              <p class="text-secondary h6 mb-3">Created by {{competition.creator.user}}</p>
+              <p class="text-secondary h6 mb-3">Category: {{competition.competition_category.name}}</p>
             </div>
             <div
               class="col-4 d-flex justify-content-center align-items-center flex-column"

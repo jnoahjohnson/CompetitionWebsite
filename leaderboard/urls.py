@@ -1,8 +1,6 @@
 from django.urls import path
-from .views import homeLeaderboardView, editLeaderboardView, viewLeaderboardView
+from .views import view_leaderboard
 
 urlpatterns = [
-    path("edit/", editLeaderboardView, name="edit"),
-    path("view/", viewLeaderboardView, name="leaderboard_view"),
-    path("", homeLeaderboardView, name="leaderboard_home"),
+    path("<int:competition_id>", view_leaderboard, name="leaderboard"),
 ]

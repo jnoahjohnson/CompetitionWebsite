@@ -3,12 +3,40 @@
   <div class="container">
     <h1 class="text-dark">{{ competition.name }}</h1>
     <h3>Points: {{ competition.points }}</h3>
+    <h4>Created by: {{competition.creator.user}}</h4>
+    <h4>Category: {{competition.competition_category.name}}</h4>
     <div class="text-center mt-5">
       <p class="h5 text-dark mb-4">{{competition.description}}</p>
     </div>
   </div>
 
+  <div class="text-center mb-3">
+    <form
+      method="POST"
+      action="{% url 'task_completed' competition_id=competition.id%}"
+    >
+      {% csrf_token %} {% if completed_task %}
+      <button type="submit" class="btn btn-primary" disabled>
+        <i class="fas fa-check text-gray-300"></i> You already completed this
+        task
+      </button>
+      {% else %}
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-check text-gray-300"></i> Complete Task
+      </button>
+      {% endif%}
+    </form>
+  </div>
+  <div class="text-center">
+    <button
+      class="btn btn-success"
+      onclick="location.href='{% url 'leaderboard' competition_id=competition.id %}'"
+    >
+      <i class="fas fa-medal text-gray-300"></i> View Leaderboard
+    </button>
+  </div>
   <div class="mx-auto d-flex flex-row justify-content-center mt-3">
+    {% if is_creator %}
     <div class="col-auto">
       <button
         class="btn btn-primary"
@@ -29,5 +57,6 @@
       </form>
     </div>
   </div>
+  {% endif %}
 </div>
 {% endblock %}

@@ -40,6 +40,21 @@
       name="competition_points"
     />
 
+    <label class="form-select" multiple aria-label="multiple select example"
+      >What category is this competition under?</label
+    >
+    <option selected>Open this select menu</option>
+    <select
+      name="competition_category"
+      class="form-control mb-3"
+      name="competition_categories"
+      id="competition_categories"
+    >
+      {% for category in competition_categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+    </select>
+
     <input class="btn btn-primary" type="submit" value="Save" />
   </form>
 </div>

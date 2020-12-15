@@ -3,19 +3,34 @@ from django.db import models
 # Create your models here.
 
 
+class CompetitionCategory(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class CompletedUsers(models.Model):
-    user_name = models.CharField(max_length=20)
+    competition = models.ForeignKey('Competition', on_delete=models.DO_NOTHING)
+    competitor = models.ForeignKey(
+        'authorization.Competitor', on_delete=models.DO_NOTHING)
     date = models.DateField()
 
     def __str__(self):
-        return self.user_name
+        return str(self.date)
 
 
 class Competition(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=40)
     points = models.IntegerField()
-    completed = models.ManyToManyField(CompletedUsers)
+    creator = models.ForeignKey('authorization.Competitor',
+                                on_delete=models.DO_NOTHING)
+    completed_users = models.ManyToManyField(
+        'authorization.Competitor', through='CompletedUsers', related_name="CompletedUsers")
+    competition_category = models.ForeignKey(
+        'CompetitionCategory', on_delete=models.DO_NOTHING, default=1)
 
     def __str__(self):
         return self.name
