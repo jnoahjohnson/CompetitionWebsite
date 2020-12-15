@@ -12,9 +12,9 @@ class CompetitionCategory(models.Model):
 
 
 class CompletedUsers(models.Model):
-    competition = models.ForeignKey('Competition', on_delete=models.DO_NOTHING)
+    competition = models.ForeignKey('Competition', on_delete=models.CASCADE)
     competitor = models.ForeignKey(
-        'authorization.Competitor', on_delete=models.DO_NOTHING)
+        'authorization.Competitor', on_delete=models.CASCADE)
     date = models.DateField()
 
     def __str__(self):
@@ -22,8 +22,8 @@ class CompletedUsers(models.Model):
 
 
 class Competition(models.Model):
-    name = models.CharField(max_length=20)
-    description = models.CharField(max_length=40)
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=2000)
     points = models.IntegerField()
     creator = models.ForeignKey('authorization.Competitor',
                                 on_delete=models.DO_NOTHING)

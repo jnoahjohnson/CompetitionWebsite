@@ -34,7 +34,7 @@ def createCompetitions(request):
 
         competition.save()
 
-        return redirect('/competitions/')
+        return redirect('competition_view', competition_id=competition.id)
 
     context = {
         "competition_categories": CompetitionCategory.objects.all()
